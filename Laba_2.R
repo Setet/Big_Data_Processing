@@ -34,45 +34,31 @@ df_mean = data.frame(
 
 #2
 #фрейм людей которые выбрали >7 и <3
-p<-df[,c("Восемь")];p
-x1<-length(p[which(p<3 | p>7)])
-
-p<-df[,c("Шесть")];p
-x2<-length(p[which(p<3 | p>7)])
-
-p<-df[,c("Девять")];p
-x3<-length(p[which(p<3 | p>7)])
-
-p<-df[,c("Четыре")];p
-x4<-length(p[which(p<3 | p>7)])
-
-p<-df[,c("Один")];p
-x5<-length(p[which(p<3 | p>7)])
-
-p<-df[,c("Ноль")];p
-x6<-length(p[which(p<3 | p>7)])
-
-p<-df[,c("Два")];p
-x7<-length(p[which(p<3 | p>7)])
-
-p<-df[,c("Пять")];p
-x8<-length(p[which(p<3 | p>7)])
-
-p<-df[,c("Три")];p
-x9<-length(p[which(p<3 | p>7)])
-
-p<-df[,c("Семь")];p
-x10<-length(p[which(p<3 | p>7)])
-
-q<-x1+x2+x3+x4+x5+x6+x7+x8+x9+x10;q
+fill_all <-c()
+for (i in 1:10){
+  p<-df[,i]
+  fill_all<-c(fill_all,length(p[which(p<3 | p>7)]))
+}
+sum(fill_all)
 
 #3
 a<-order(df_mean[,"Среднее"],decreasing = TRUE);a
 df_mean[a,]
 
 #4
+fill_colors <- c()
+for ( i in 1:length(df_mean[,c("Среднее")]) ) {
+  if (df_mean[,c("Среднее")][i] > 6){
+    fill_colors <- c(fill_colors, "#00FF00")
+  } else {
+    fill_colors <- c(fill_colors, "#FF0000")
+  }
+}
+
 p<-df_mean[,c("Среднее")]
-barplot(p, col = "steelblue",
+q<-df_mean[,c("Цифра")]
+barplot(p,names.arg = q, col = fill_colors,
         xlab = "Рейтинг",
         ylab = "Цифры",
-        border = "red", width = sqrt(p))
+        main="Топ лучших цифр",
+        width = sqrt(p))
