@@ -57,237 +57,92 @@ df_2021 = html_table(nodes[[1]])%>%as.data.frame()
 df_2021[,1]<-c(1:length(df_2021[,1]))
 
 #вариант 13 (Бразилия, Индия, Ливан, Турция, Дания)
-#пока оставляю костыли
+vec_country<-c("Brazil","India","Lebanon","Turkey","Denmark")
+
+list_year <- list(df_2014,df_2015,df_2016,df_2017,
+                df_2018,df_2019,df_2020,df_2021)
+
 df_Brazil<-df_2014[1,]
 df_India<-df_2014[1,]
 df_Lebanon<-df_2014[1,]
 df_Turkey<-df_2014[1,]
 df_Denmark<-df_2014[1,]
 
-a<-c(df_2014[,2],df_2015[,2]);a
+list_country<-list(df_Brazil,df_India,df_Lebanon,
+                   df_Turkey,df_Denmark)
 
-q=0
-for (i in 1:length(df_2014[,2])){
-  q=q+1
-  p=df_2014[i,2]
-  if(p=="Brazil")
+for(i in 1:8){
+  qwerty=which(list_year[[i]][,2]==vec_country[1])
+  if(is.integer(qwerty)&&length(qwerty)!=0L)
   {
-    df_Brazil[1,] <- df_2014[q,1:11]
+    list_country[[i]] <- list_year[[i]][qwerty,1:11]
   }
-  if(p=="India")
+  else
   {
-    df_India[1,] <- df_2014[q,1:11]
+    list_country[[i]]<-NA
   }
-  if(p=="Lebanon")
-  {
-    df_Lebanon[1,] <- df_2014[q,1:11]
-  }
-  if(p=="Turkey")
-  {
-    df_Turkey[1,] <- df_2014[q,1:11]
-  }
-  if(p=="Denmark")
-  {
-    df_Denmark[1,] <- df_2014[q,1:11]
-  }
+  df_Brazil[i,]<-list_country[[i]]
 }
 
-q=0
-for (i in 1:length(df_2015[,2])){
-  q=q+1
-  p=df_2015[i,2]
-  if(p=="Brazil")
+for(i in 1:8){
+  qwerty=which(list_year[[i]][,2]==vec_country[2])
+  if(is.integer(qwerty)&&length(qwerty)!=0L)
   {
-    df_Brazil[2,] <- df_2015[q,1:11]
+    list_country[[i]] <- list_year[[i]][qwerty,1:11]
   }
-  if(p=="India")
+  else
   {
-    df_India[2,] <- df_2015[q,1:11]
+    list_country[[i]]<-NA
   }
-  if(p=="Lebanon")
-  {
-    df_Lebanon[2,] <- df_2015[q,1:11]
-  }
-  if(p=="Turkey")
-  {
-    df_Turkey[2,] <- df_2015[q,1:11]
-  }
-  if(p=="Denmark")
-  {
-    df_Denmark[2,] <- df_2015[q,1:11]
-  }
+  df_India[i,]<-list_country[[i]]
 }
 
-q=0
-for (i in 1:length(df_2016[,2])){
-  q=q+1
-  p=df_2016[i,2]
-  if(p=="Brazil")
+for(i in 1:8){
+  qwerty=which(list_year[[i]][,2]==vec_country[3])
+  if(is.integer(qwerty)&&length(qwerty)!=0L)
   {
-    df_Brazil[3,] <- df_2016[q,1:11]
+    list_country[[i]] <- list_year[[i]][qwerty,1:11]
   }
-  if(p=="India")
+  else
   {
-    df_India[3,] <- df_2016[q,1:11]
+    list_country[[i]]<-NA
   }
-  if(p=="Lebanon")
-  {
-    df_Lebanon[3,] <- df_2016[q,1:11]
-  }
-  if(p=="Turkey")
-  {
-    df_Turkey[3,] <- df_2016[q,1:11]
-  }
-  if(p=="Denmark")
-  {
-    df_Denmark[3,] <- df_2016[q,1:11]
-  }
+  df_Lebanon[i,]<-list_country[[i]]
 }
 
-q=0
-for (i in 1:length(df_2017[,2])){
-  q=q+1
-  p=df_2017[i,2]
-  if(p=="Brazil")
+for(i in 1:8){
+  qwerty=which(list_year[[i]][,2]==vec_country[4])
+  if(is.integer(qwerty)&&length(qwerty)!=0L)
   {
-    df_Brazil[4,] <- df_2017[q,1:11]
+    list_country[[i]] <- list_year[[i]][qwerty,1:11]
   }
-  if(p=="India")
+  else
   {
-    df_India[4,] <- df_2017[q,1:11]
+    list_country[[i]]<-NA
   }
-  if(p=="Lebanon")
-  {
-    df_Lebanon[4,] <- df_2017[q,1:11]
-  }
-  if(p=="Turkey")
-  {
-    df_Turkey[4,] <- df_2017[q,1:11]
-  }
-  if(p=="Denmark")
-  {
-    df_Denmark[4,] <- df_2017[q,1:11]
-  }
+  df_Turkey[i,]<-list_country[[i]]
 }
 
-q=0
-for (i in 1:length(df_2018[,2])){
-  q=q+1
-  p=df_2018[i,2]
-  if(p=="Brazil")
+for(i in 1:8){
+  qwerty=which(list_year[[i]][,2]==vec_country[5])
+  if(is.integer(qwerty)&&length(qwerty)!=0L)
   {
-    df_Brazil[5,] <- df_2018[q,1:11]
+    list_country[[i]] <- list_year[[i]][qwerty,1:11]
   }
-  if(p=="India")
+  else
   {
-    df_India[5,] <- df_2018[q,1:11]
+    list_country[[i]]<-NA
   }
-  if(p=="Lebanon")
-  {
-    df_Lebanon[5,] <- df_2018[q,1:11]
-  }
-  if(p=="Turkey")
-  {
-    df_Turkey[5,] <- df_2018[q,1:11]
-  }
-  if(p=="Denmark")
-  {
-    df_Denmark[5,] <- df_2018[q,1:11]
-  }
+  df_Denmark[i,]<-list_country[[i]]
 }
 
-q=0
-for (i in 1:length(df_2019[,2])){
-  q=q+1
-  p=df_2019[i,2]
-  if(p=="Brazil")
-  {
-    df_Brazil[6,] <- df_2019[q,1:11]
-  }
-  if(p=="India")
-  {
-    df_India[6,] <- df_2019[q,1:11]
-  }
-  if(p=="Lebanon")
-  {
-    df_Lebanon[6,] <- df_2019[q,1:11]
-  }
-  if(p=="Turkey")
-  {
-    df_Turkey[6,] <- df_2019[q,1:11]
-  }
-  if(p=="Denmark")
-  {
-    df_Denmark[6,] <- df_2019[q,1:11]
-  }
-}
-
-q=0
-for (i in 1:length(df_2020[,2])){
-  q=q+1
-  p=df_2020[i,2]
-  if(p=="Brazil")
-  {
-    df_Brazil[7,] <- df_2020[q,1:11]
-  }
-  if(p=="India")
-  {
-    df_India[7,] <- df_2020[q,1:11]
-  }
-  if(p=="Lebanon")
-  {
-    df_Lebanon[7,] <- df_2020[q,1:11]
-  }
-  if(p=="Turkey")
-  {
-    df_Turkey[7,] <- df_2020[q,1:11]
-  }
-  if(p=="Denmark")
-  {
-    df_Denmark[7,] <- df_2020[q,1:11]
-  }
-}
-
-q=0
-for (i in 1:length(df_2021[,2])){
-  q=q+1
-  p=df_2021[i,2]
-  if(p=="Brazil")
-  {
-    df_Brazil[8,] <- df_2021[q,1:11]
-  }
-  if(p=="India")
-  {
-    df_India[8,] <- df_2021[q,1:11]
-  }
-  if(p=="Lebanon")
-  {
-    df_Lebanon[8,] <- df_2021[q,1:11]
-  }
-  if(p=="Turkey")
-  {
-    df_Turkey[8,] <- df_2021[q,1:11]
-  }
-  if(p=="Denmark")
-  {
-    df_Denmark[8,] <- df_2021[q,1:11]
-  }
-}
-
-df_Brazil<-df_Brazil[,-c(1,2)]
-df_India<-df_India[,-c(1,2)]
-df_Lebanon<-df_Lebanon[,-c(1,2)]
-df_Turkey<-df_Turkey[,-c(1,2)]
-df_Denmark<-df_Denmark[,-c(1,2)]
-
-vec_year<-c(2014,2015,2016,2017,2018,
-            2019,2020,2021)
+vec_year<-c(2014:2021)
 
 country_award<-c("Бразилия","Индия","Ливан","Турция","Дания")
 
 vec_col<-rainbow(5)
 
-vec_grafick<-c("График по индексу качества жизни",
+vec_grafick<-c("","График по индексу качества жизни",
                "График по индексу покупательной способности",
                "График по индексу безопасности",
                "График по индексу здравохранения",
@@ -299,22 +154,39 @@ vec_grafick<-c("График по индексу качества жизни",
 
 vec_grafick_years<-c("в странах 2014-2021")
 
-for (i in 1:9)
+df_Brazil<-df_Brazil[,-c(2)]
+df_Brazil[,1]<-vec_year
+
+df_India<-df_India[,-c(2)]
+df_India[,1]<-vec_year
+
+df_Lebanon<-df_Lebanon[,-c(2)]
+df_Lebanon[,1]<-vec_year
+
+df_Turkey<-df_Turkey[,-c(2)]
+df_Turkey[,1]<-vec_year
+
+df_Denmark<-df_Denmark[,-c(2)]
+df_Denmark[,1]<-vec_year
+
+max_axis_y=300
+
+for (i in 2:10)
 {
   plot(vec_year,df_Brazil[,i] , type="b",  ann=FALSE,
-       col=vec_col[1], lty=2, pch=2, lwd=2,ylim=c(0, 400))
+       col=vec_col[1], lty=2, pch=2, lwd=2,ylim=c(0, max_axis_y))
   
   lines(vec_year,df_India[,i] , type="b",  ann=FALSE,
-        col=vec_col[2], lty=2, pch=2, lwd=2,ylim=c(0, 400))
+        col=vec_col[2], lty=2, pch=2, lwd=2,ylim=c(0, max_axis_y))
   
   lines(vec_year,df_Lebanon[,i] , type="b",  ann=FALSE,
-        col=vec_col[3], lty=2, pch=2, lwd=2,ylim=c(0, 400))
+        col=vec_col[3], lty=2, pch=2, lwd=2,ylim=c(0, max_axis_y))
   
   lines(vec_year,df_Turkey[,i] , type="b",  ann=FALSE,
-        col=vec_col[4], lty=2, pch=2, lwd=2,ylim=c(0, 400))
+        col=vec_col[4], lty=2, pch=2, lwd=2,ylim=c(0, max_axis_y))
   
   lines(vec_year,df_Denmark[,i] , type="b",  ann=FALSE,
-        col=vec_col[5], lty=2, pch=2, lwd=2,ylim=c(0, 400))
+        col=vec_col[5], lty=2, pch=2, lwd=2,ylim=c(0, max_axis_y))
   
   title(main=paste(vec_grafick[i],vec_grafick_years), col.main="red",
         xlab="Года",
@@ -323,3 +195,20 @@ for (i in 1:9)
   
   legend("topright", country_award,lty=2,pch=2, col=vec_col)
 }
+
+url = read_html("https://kudago.com/spb/list/33-luchshih-muzeya-peterburga/")
+selector_name <- ".post-list-item-title-link span"
+name <- html_text(html_nodes(url, selector_name), trim = TRUE) %>% as.array()
+selector_name <- "address"
+address <- html_text(html_nodes(url, selector_name), trim = TRUE) %>% as.array()
+address <- gsub("\u{e01e}", "", address)
+address <- substr(address, 2, nchar(address))
+address <- gsub("\n", "", address)
+address <- gsub("  ", "", address)
+selector_name <- ".post-list-item-preview"
+link <- html_nodes(url, selector_name) %>% html_attr("href") %>% as.array()
+link <- paste0("https://kudago.com", link)
+remove <- c(41)
+link <- link[-remove]
+name <- name[-remove]
+df_Museums <- data.frame(Название = name, Адрес = address, Ссылка = link)
