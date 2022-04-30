@@ -13,25 +13,24 @@ city.01 <- read.table("Help_fo_Laba_6.csv", header = TRUE,";", dec=',')
 #   В данной задаче переменные существенно различны.
 #   Стандартизировать надо.
 city.02 <- scale(city.01[,2:4], center = TRUE, scale = TRUE)
-#   Вариант 2 - к минимуму 0 и максимуму 1
 
-#Исключим колонку "Страна"
+#   Исключим колонку "Страна"
 city.02<-protein.01[,-1]
 maxs <- apply(city.02, 2, max)
 mins <- apply(city.02, 2, min)
 
 city.02 <- scale(city.02, center = mins, scale = maxs - mins)
 
-#Вернем колонку "Страна"
+#   Вернем колонку "Страна"
 Countries<-city.01$City
 city.02<-data.frame(Countries,city.02)
 
-#  Создаем матрицу попарных расстояний (по умолчанию - Евклидово расстояние)
+#   Создаем матрицу попарных расстояний (по умолчанию - Евклидово расстояние)
 dist.city <- dist(city.02 [,2:4])
 
-#  Проводим кластерный анализ, 
-#  результаты записываем в список clust.protein
-# hclust ожидает матрицу расстояния, а не исходные данные.
+#   Проводим кластерный анализ, 
+#   результаты записываем в список clust.protein
+#   hclust ожидает матрицу расстояния, а не исходные данные.
 
 clust.city <- hclust(dist.city, "ward.D")
 
@@ -39,7 +38,7 @@ clust.city <- hclust(dist.city, "ward.D")
 clust.city
 
 #  Шаг 4.  Построение дендрограммы
-k = 4
+k = 4   #явно 4 кластера
 
 plot(clust.city, labels = city.01$City)
 rect.hclust(clust.city, k = 4, border="red")
@@ -68,27 +67,31 @@ city.01[groups==2, 1]
 city.01[groups==3, 1]
 city.01[groups==4, 1]
 
-#  Для каждого вида еды определяем, 
-#  какая доля потребителей в среднем кластере приобретала этот вид еды
+#  Для каждого столбц определяем, 
+#  какая доля стран в среднем кластере приобретала этот столбец
 
-#  в 1-ом кластере
+#   в 1-ом кластере
 g1<-colMeans(city.01[groups==1, 2:4])
-#  во 2-ом кластере
+#   во 2-ом кластере
 g2<-colMeans(city.01[groups==2, 2:4])
-#  в 3-ем кластере
+#   в 3-ем кластере
 g3<-colMeans(city.01[groups==3, 2:4])
-#  во 4-ом кластере
+#   во 4-ом кластере
 g4<-colMeans(city.01[groups==4, 2:4])
 
+#   делаем дата фрейм из векторов групп кластеров
 df<-data.frame(g1,g2,g3,g4); df
 df1<-t(df); df1
-barplot(df1, ylim=range(pretty(c(0, ))), 
-        main="Распредление пищевых предпочтенй в странах Европы", 
-        col=c("magenta","red","yellow","blue","green"),legend=rownames(df1))
 
-#Построим боксплот, который поможет нам убедиться, что мы 
-#действительно имеем 5 класса существенно отличных друг от друга:
+#   делаю 3 барплота,т.к размещать на одном не целисообразно
+barplot(df1[,1], ylim=range(pretty(c(0,max(df1[,1])))), 
+        main="Work", 
+        col=c("magenta","red","yellow","blue"),legend=rownames(df1))
 
-boxplot(df)
-# Для датасета assess
-#barplot(df1, ylim=range(pretty(c(0, 60))), main="Распредление претендентов", col=c("magenta","red","yellow","blue"),legend=rownames(df1))
+barplot(df1[,2], ylim=range(pretty(c(0,max(df1[,2])))), 
+        main="Price", 
+        col=c("magenta","red","yellow","blue"),legend=rownames(df1))
+
+barplot(df1[,3], ylim=range(pretty(c(0,max(df1[,3])))), 
+        main="Salary", 
+        col=c("magenta","red","yellow","blue"),legend=rownames(df1))
