@@ -54,7 +54,6 @@ barplot(new_df_v2, ylim=c(0,5),
         beside=TRUE)
 axis(2, at = 0:5, labels = 0:5)
 legend("topright", legend = rownames(new_df_v2), col=vec_color, lwd=10, bty = "n")
-windows()
 plot(1:47, clust.df$height, type='b')
 
 
@@ -82,10 +81,9 @@ legend("bottom", legend = levels(my_data$class),
        pch = c(16, 17, 18), 
        inset = -0.1, xpd = TRUE, horiz = TRUE)
 
-install.packages("klaR")
 library(klaR)
 
-naive_data <- NaiveBayes(my_data$class ~ ., data = my_data)
+naive_data <- NaiveBayes(my_data$class ~ Work, data = my_data)
 naive_data$tables
 naive_data
 
@@ -95,7 +93,7 @@ plot(naive_data)
 pred <- predict(naive_data, my_data)$class
 pred
 
-table(Факт = my_data$class, Прогноз = pred) 
+table(my_data$class, pred) 
 Acc <- mean(pred == my_data$class)
 paste("Точность = ", round(100*Acc, 2), "%", sep = "")
 
@@ -107,10 +105,10 @@ nrow(trainData)
 nrow(testData)              
 nrow(my_data) 
 
-install.packages("party")
+
 library(party)
 
-myFormula <- class ~ Agr + Min + Man + PS + Con
+myFormula <- class ~ Work + Price + Salary
 data_ctree <- ctree(myFormula, data=trainData)
 table(predict(data_ctree), trainData$class)
 
@@ -119,7 +117,7 @@ plot(data_ctree)
 test_predicted <- predict(data_ctree, newdata=testData)
 table(test_predicted, testData$class)
 
-install.packages("randomForest")
+
 library(randomForest)
 rf <- randomForest(class ~ .,data=trainData, ntree=30, proximity=TRUE)
 table(predict(rf), trainData$class)
