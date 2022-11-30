@@ -1,8 +1,8 @@
-# Часть 1
+# ????? 1
 library(lattice)
 library(tibble)
 
-df<-read.csv("F:/GitHub/Big_Data_Processing/Help_fo_Laba_6.csv", header=TRUE,sep = ";")
+df<-read.csv("/home/setet/Р”РѕРєСѓРјРµРЅС‚С‹/GitHub/Big_Data_Processing/Help_fo_Laba_6.csv", header=TRUE,sep = ";")
 
 vec_country<-df[,1]
 new_df<-df[,2:4]
@@ -71,7 +71,7 @@ cloud(Work ~ Price  * Salary, group = my_data$class, data = my_data, auto.key = 
 
 
 
-# Часть 2
+# ????? 2
 library("scatterplot3d")
 
 
@@ -95,7 +95,7 @@ pred
 
 table(my_data$class, pred) 
 Acc <- mean(pred == my_data$class)
-paste("Точность = ", round(100*Acc, 2), "%", sep = "")
+paste("???????? = ", round(100*Acc, 2), "%", sep = "")
 
 set.seed(1234)
 ind <- sample(2, nrow(my_data), replace=TRUE, prob=c(0.7, 0.3))
