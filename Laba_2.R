@@ -49,7 +49,8 @@ for (i in 1:10) {
 }
 sum(fill_all)
 
-# 2
+# 3
+# Рейтинг по убыванию
 fill_average <- c()
 a <- order(df_mean[, 2], decreasing = TRUE)
 for (i in 1:length(df_mean[, 2])) {
@@ -58,6 +59,7 @@ for (i in 1:length(df_mean[, 2])) {
 fill_average
 
 # 4
+# График
 fill_colors <- c()
 for (i in 1:length(df_mean[, 2])) {
   if (fill_average [i] > 6) {
